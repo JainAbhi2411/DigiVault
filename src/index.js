@@ -23,9 +23,10 @@ const PORT = process.env.PORT || 5000;
 // ─── Security Middleware ──────────────────────────────────────────────────────
 app.use(helmet());
 app.use(cors({
-  origin: [process.env.CLIENT_URL || 'http://localhost:8081', 'exp://'],
+  origin: true,        // allow all origins — React Native apps don't use browser CORS
   credentials: true,
 }));
+
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 min
